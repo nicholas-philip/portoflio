@@ -4,6 +4,7 @@ export default {
   theme: {
     extend: {},
   },
+  darkMode: "class",
   colors: {
     lightHover: "#fcf4ff",
     darkHover: "#2a004a",

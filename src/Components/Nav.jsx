@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import arrowIcon from "../assets/arrow-icon.png";
+import { GoArrowUpRight } from "react-icons/go";
 import { CiLight } from "react-icons/ci";
 import { MdNightlight } from "react-icons/md";
 import { RiMenu3Fill } from "react-icons/ri";
@@ -58,7 +58,9 @@ const Nav = () => {
     <>
       <div
         className={`w-full fixed top-0 left-0 text-black px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 ${
-          isScroll ? "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm" : ""
+          isScroll
+            ? "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm dark:bg-gray-900 dark:bg-opacity-50 dark:shadow-sm"
+            : ""
         }`}
       >
         <Link to={"/"}>
@@ -71,9 +73,7 @@ const Nav = () => {
             isScroll
               ? ""
               : "bg-white shadow-sm bg-opacity-50 dark:bg-gray-900 dark:bg-opacity-50 backdrop-blur-lg"
-          } ${
-            isDarkMode ? "bg-[#1D232A] text-white" : "bg-rose-50 text-black"
-          }`}
+          } ${isDarkMode ? "bg-[#1D232A] text-white" : "bg-white text-black"}`}
         >
           <button onClick={() => scrollToSection("home")}>Home</button>
           <button onClick={() => scrollToSection("about")}>About</button>
@@ -114,7 +114,7 @@ const Nav = () => {
             className="hidden lg:flex items-center gap-3 px-10 py-2.5 border-black border rounded-full ml-4 font-semibold dark:text-white"
           >
             Contact{" "}
-            <img src={arrowIcon} alt="" className="w-3 dark:text-white" />
+            <GoArrowUpRight className="w-5 dark:text-white text-black" />
           </Link>
           <button
             className="block md:hidden ml-3 dark:text-white"
