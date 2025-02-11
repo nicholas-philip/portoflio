@@ -37,7 +37,7 @@ const About = () => {
           />
         </div>
         <div className="flex-1">
-          <p className="mb-10 max-w-2xl font-serif">
+          <p className="mb-10 max-w-2xl font-serif ">
             I am an experienced Frontend Developer with over a decade of
             professional expertise in the field. Throughout my career, I have
             had the privilege of collaborating with prestigious organizations,
@@ -45,7 +45,7 @@ const About = () => {
           </p>
           <div
             className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl py-8 
-  hover:text-black"
+              hover:text-black"
           >
             <div
               className={`border border-gray-300 rounded-xl p-6 cursor-pointer hover:-translate-y-1 duration-500 hover:shadow-[4px_4px_0_#000] dark:hover:text-black`}
