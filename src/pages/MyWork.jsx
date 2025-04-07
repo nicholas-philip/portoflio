@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { TbWorld } from "react-icons/tb";
 import img from "../assets/susugroup.png";
 import market from "../assets/MarketPress.png";
-import todolist from "../assets/Todo-list (2).png";
+import todolist from "../assets/todo-list.png";
 import Game from "../assets/game (2).png";
 import Aos from "aos";
 import "aos/dist/aos.css"; // Make sure AOS styles are imported
