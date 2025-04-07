@@ -37,10 +37,14 @@ const Nav = () => {
   };
 
   const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView();
-      closeMenu();
+    if (window.location.pathname !== "/") {
+      window.location.href = `/#${id}`;
+    } else {
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+        closeMenu();
+      }
     }
   };
 
@@ -78,8 +82,9 @@ const Nav = () => {
           <button onClick={() => scrollToSection("home")}>Home</button>
           <button onClick={() => scrollToSection("about")}>About</button>
           <button onClick={() => scrollToSection("services")}>Services</button>
-          <button onClick={() => scrollToSection("work")}>My Work</button>
+          <button onClick={() => scrollToSection("mywork")}>My Work</button>
           <button onClick={() => scrollToSection("contact")}>Contact me</button>
+          <button onClick={() => scrollToSection("footer")}>My handles</button>
         </ul>
         <div className="flex items-center gap-4 dark:text-white">
           <label className="swap swap-rotate ">
@@ -144,8 +149,9 @@ const Nav = () => {
           </Link>
           <Link onClick={() => scrollToSection("about")}>About</Link>
           <Link onClick={() => scrollToSection("services")}>Services</Link>
-          <Link onClick={() => scrollToSection("work")}>My Work</Link>
+          <Link onClick={() => scrollToSection("mywork")}>My Work</Link>
           <Link onClick={() => scrollToSection("contact")}>Contact me</Link>
+          <Link onClick={() => scrollToSection("footer")}>My handles</Link>
         </ul>
       </div>
     </>

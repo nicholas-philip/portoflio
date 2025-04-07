@@ -6,6 +6,7 @@ import Contact from "../pages/Contact";
 import About from "../pages/About";
 import Services from "../pages/Services";
 import MyWork from "../pages/MyWork";
+import Footer from "../pages/Footer";
 
 const RootLayout = () => {
   return (
@@ -17,6 +18,7 @@ const RootLayout = () => {
       <Services />
       <MyWork />
       <Contact />
+      <Footer />
     </div>
   );
 };
