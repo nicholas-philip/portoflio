@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { TbWorld } from "react-icons/tb";
 import img from "../assets/susugroup.png";
 import market from "../assets/MarketPress.png";
-import todolist from "../assets/todo-list.png";
+// import todolist from "../assets/todo-list.png";
 import Game from "../assets/game (2).png";
 import Aos from "aos";
 import "aos/dist/aos.css"; // Make sure AOS styles are imported
@@ -32,18 +32,7 @@ const MyWork = () => {
         source: "#",
       },
     },
-    {
-      title: "TODO LIST",
-      date: "June 2023 - Present",
-      description:
-        "Built a user-friendly to-do list app. The app features task prioritization. It also includes a clean, intuitive interface with customizable themes for a personalized user experience.",
-      tags: ["Next.js", "React.js", "TailwindCSS", "React Icons", "React DOM"],
-      image: todolist,
-      links: {
-        website: "#",
-        source: "#",
-      },
-    },
+
     {
       title: "TIC TAC TOE",
       date: "June 2023 - Present",
