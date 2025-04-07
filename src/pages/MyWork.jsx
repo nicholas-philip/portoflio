@@ -5,6 +5,7 @@ import market from "../assets/MarketPress.png";
 import todolist from "../assets/Todo-list (2).png";
 import Game from "../assets/game (2).png";
 import Aos from "aos";
+import "aos/dist/aos.css"; // Make sure AOS styles are imported
 
 const MyWork = () => {
   const projects = [
@@ -58,7 +59,7 @@ const MyWork = () => {
   ];
 
   useEffect(() => {
-    Aos.refresh();
+    Aos.init({ duration: 1200 }); // Initialize AOS with custom duration
   }, []);
 
   return (
@@ -67,7 +68,6 @@ const MyWork = () => {
       className="py-10 px-4 max-w-5xl mx-auto"
       data-aos="fade-up"
       data-aos-anchor-placement="top-center"
-      data-aos-duration="1200"
     >
       <div className="text-center mb-10">
         <div
