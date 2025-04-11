@@ -1,12 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { TbWorld } from "react-icons/tb";
 import img from "../assets/susugroup.png";
 import market from "../assets/MarketPress.png";
-// import todolist from "../assets/todo-list.png";
 import Game from "../assets/game (2).png";
-import Aos from "aos";
-import "aos/dist/aos.css"; // Make sure AOS styles are imported
-
+import { motion } from "framer-motion";
 const MyWork = () => {
   const projects = [
     {
@@ -32,7 +29,6 @@ const MyWork = () => {
         source: "#",
       },
     },
-
     {
       title: "TIC TAC TOE",
       date: "June 2023 - Present",
@@ -47,81 +43,68 @@ const MyWork = () => {
     },
   ];
 
-  useEffect(() => {
-    Aos.init({ duration: 1200 }); // Initialize AOS with custom duration
-  }, []);
-
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
       id="mywork"
       className="py-10 px-4 max-w-5xl mx-auto"
-      data-aos="fade-up"
-      data-aos-anchor-placement="top-center"
     >
       <div className="text-center mb-10">
-        <div
-          className="text-center mb-2 text-lg font-serif"
-          data-aos="fade-down"
-          data-aos-delay="100"
+        <motion.div
+          initial={{ y: -20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-center mb-2 text-lg font-serif dark:text-white"
         >
           My Projects
-        </div>
-        <h2
-          className="text-center text-2xl sm:text-5xl font-serif"
-          data-aos="zoom-in"
-          data-aos-delay="200"
+        </motion.div>
+        <motion.h2
+          initial={{ y: -20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-center text-2xl sm:text-5xl font-serif dark:text-white"
         >
           Check out my latest work
-        </h2>
-        <p
-          className="font-semibold m-2 text-center"
-          data-aos="fade-up"
-          data-aos-delay="300"
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.7 }}
+          className="font-semibold m-2 text-center dark:text-white"
         >
           I've worked on a variety of projects, from simple websites to complex
           web applications. Here are a few of my favorites.
-        </p>
+        </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-2 gap-5 md:ml-12">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.9 }}
+        className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-2 gap-5 md:ml-12"
+      >
         {projects.map((project, index) => (
-          <div
+          <motion.div
+            whileInHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
             key={index}
-            className={`rounded-xl border shadow-sm md:w-[380px] max-h-[500px] ${
-              index === 0
-                ? "border-black dark:border-white"
-                : "border-black dark:border-white"
-            }`}
-            data-aos="fade-up"
-            data-aos-delay={500 + index * 100} // Staggered animation delay for each card
+            className="rounded-xl border shadow-sm md:w-[380px] max-h-[500px] border-black dark:border-white"
           >
             <img
               src={project.image}
               alt={project.title}
               className="rounded-t-xl h-40 md:h-48 w-full mb-4"
-              data-aos="zoom-in"
-              data-aos-delay="600"
             />
             <div className="p-4">
-              <h3
-                className="text-lg sm:text-xl font-semibold dark:text-white"
-                data-aos="fade-up"
-                data-aos-delay="700"
-              >
+              <h3 className="text-lg sm:text-xl font-semibold dark:text-white">
                 {project.title}
               </h3>
-              <p
-                className="text-sm text-black mb-2 dark:text-white"
-                data-aos="fade-up"
-                data-aos-delay="800"
-              >
+              <p className="text-sm text-black mb-2 dark:text-white">
                 {project.date}
               </p>
-              <p
-                className="text-black mb-2 dark:text-white"
-                data-aos="fade-up"
-                data-aos-delay="900"
-              >
+              <p className="text-black mb-2 dark:text-white">
                 {project.description}
               </p>
 
@@ -130,8 +113,6 @@ const MyWork = () => {
                   <span
                     key={idx}
                     className="bg-gray-300 text-black px-2 py-1 rounded-full text-xs"
-                    data-aos="fade-up"
-                    data-aos-delay="1000"
                   >
                     {tag}
                   </span>
@@ -144,8 +125,6 @@ const MyWork = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-black text-white w-full sm:w-28 flex justify-center items-center h-10 rounded-2xl font-semibold gap-3 p-3"
-                  data-aos="zoom-in"
-                  data-aos-delay="1100"
                 >
                   <TbWorld /> Website
                 </a>
@@ -155,18 +134,16 @@ const MyWork = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-black text-white w-full sm:w-28 flex justify-center items-center h-10 rounded-2xl font-semibold gap-3 p-3"
-                    data-aos="zoom-in"
-                    data-aos-delay="1200"
                   >
                     Source
                   </a>
                 )}
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 };
 

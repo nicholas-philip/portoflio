@@ -1,19 +1,23 @@
 import userImg from "../assets/my-profile.jpeg";
-import { FaCode, FaNodeJs, FaYarn, FaGitAlt, FaGithub } from "react-icons/fa";
-import { IoSchoolOutline } from "react-icons/io5";
-import { BiBriefcaseAlt2 } from "react-icons/bi";
+import {
+  FaHtml5,
+  FaCode,
+  FaNodeJs,
+  FaYarn,
+  FaGitAlt,
+  FaGithub,
+  FaCss3Alt,
+} from "react-icons/fa";
+import { RiTailwindCssFill } from "react-icons/ri";
+import { TbBrandJavascript } from "react-icons/tb";
 import { VscVscode } from "react-icons/vsc";
 import { useEffect, useState } from "react";
-import Aos from "aos";
+import { motion } from "framer-motion";
 
 const About = () => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     return localStorage.theme === "dark";
   });
-
-  useEffect(() => {
-    Aos.refresh();
-  }, []);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -26,87 +30,169 @@ const About = () => {
   }, [isDarkMode]);
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1, delay: 0.3 }}
       id="about"
       className="w-full px-[12%] py-10 scroll-mt-20 text-black dark:text-white"
-      data-aos="fade-up"
-      data-aos-anchor-placement="top-center"
-      data-aos-duration="1000"
     >
-      <h4
+      <motion.h4
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
         className="text-center mb-2 text-lg font-serif"
-        data-aos="fade-down"
-        data-aos-delay="100"
       >
         Introduction
-      </h4>
-      <h1
+      </motion.h4>
+      <motion.h1
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
         className="text-center text-5xl font-serif"
-        data-aos="zoom-in"
-        data-aos-delay="200"
       >
         About me
-      </h1>
+      </motion.h1>
 
-      <div
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
         className="flex w-full flex-col lg:flex-row items-center gap-20 my-20"
-        data-aos="fade-up"
-        data-aos-delay="300"
       >
-        <div
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
           className="w-64 sm:w-80 rounded-3xl max-w-none"
-          data-aos="flip-left"
-          data-aos-delay="400"
         >
           <img
             src={userImg}
             alt="user"
             className="w-full rounded-3xl h-96 object-cover"
           />
-        </div>
+        </motion.div>
 
-        <div className="flex-1" data-aos="fade-left" data-aos-delay="500">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="flex-1"
+        >
           <p className="mb-10 max-w-2xl font-serif">
-            I am an experienced Frontend Developer with over a decade of
-            professional expertise in the field. Throughout my career, I have
-            had the privilege of collaborating with prestigious organizations,
-            contributing to their success and growth.
+            I am a Junior Frontend Engineer with a strong foundation in building
+            responsive and user-friendly web applications. I’ve had the
+            opportunity to collaborate on exciting projects and continuously
+            grow my skills in modern frontend technologies.
           </p>
-
-          <div
-            className="grid grid-cols-3 justify-center sm:grid-cols-3 gap-6 max-w-4xl py-8 hover:text-black"
-            data-aos="zoom-in-up"
-            data-aos-delay="600"
+          <motion.h4
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1.3, delay: 0.5 }}
+            className="flex justify-center items-center font-semibold"
           >
-            {/* You can wrap each icon or skill block in a div and animate them individually if desired */}
-            <div data-aos="fade-up" data-aos-delay="650">
-              <FaCode size={40} />
-              <p>HTML / CSS / JS</p>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="700">
+            What I use
+          </motion.h4>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1.5, delay: 0.6 }}
+            className="grid grid-cols-3 justify-center sm:grid-cols-3 gap-6 max-w-4xl py-8 "
+          >
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="text-center"
+            >
+              <FaHtml5 size={40} />
+              <p>HTML </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="text-center"
+            >
+              <FaCss3Alt size={40} />
+              <p>Vanilla CSS </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="text-center"
+            >
+              <RiTailwindCssFill size={40} />
+              <p>TailwindCss</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="text-center"
+            >
+              <TbBrandJavascript size={40} />
+              <p>JavaScript </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="text-center"
+            >
               <FaNodeJs size={40} />
               <p>Node.js</p>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="750">
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="text-center"
+            >
               <FaYarn size={40} />
               <p>Yarn / npm</p>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="800">
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="text-center"
+            >
               <FaGitAlt size={40} />
               <p>Git</p>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="850">
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="text-center"
+            >
               <FaGithub size={40} />
               <p>GitHub</p>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="900">
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="text-center"
+            >
               <VscVscode size={40} />
               <p>VS Code</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 };
 

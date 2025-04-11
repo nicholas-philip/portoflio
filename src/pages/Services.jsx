@@ -1,13 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { CiGlobe } from "react-icons/ci";
 import { AiFillAndroid } from "react-icons/ai";
 import { CgIfDesign } from "react-icons/cg";
-import Aos from "aos";
-
+import { motion } from "framer-motion";
 const Services = () => {
   const boxData = [
     {
-      icons: <CiGlobe />,
+      icons: <CiGlobe size={28} />,
       title: "Web Development",
       description: "I can create high-quality websites and web applications.",
       read: "read more ",
@@ -28,81 +27,70 @@ const Services = () => {
     },
   ];
 
-  useEffect(() => {
-    Aos.refresh();
-  }, []);
-
   return (
-    <div
+    <motion.div
+      initial={{ scale: 0 }}
+      whileInView={{ scale: 1 }}
+      transition={{ duration: 1 }}
       className="bg:px-[12%] bg:py-10 scroll-mt-20 text-black dark:text-white flex flex-col items-center"
       id="services"
-      data-aos="fade-up"
-      data-aos-anchor-placement="top-center"
-      data-aos-duration="1200"
     >
-      <h4
+      <motion.h4
+        initial={{ y: -20, scale: 0 }}
+        whileInView={{ y: -0, scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
         className="text-center mb-2 text-lg font-serif"
-        data-aos="fade-down"
-        data-aos-delay="100"
       >
         What I Offer
-      </h4>
-      <h1
+      </motion.h4>
+
+      <motion.h1
+        initial={{ y: -20, scale: 0 }}
+        whileInView={{ y: -20, scale: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
         className="text-center text-2xl sm:text-5xl font-serif"
-        data-aos="zoom-in"
-        data-aos-delay="200"
       >
         My Services
-      </h1>
-      <p
+      </motion.h1>
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.7, delay: 0.5 }}
         className="font-semibold m-2 text-center"
-        data-aos="fade-up"
-        data-aos-delay="300"
       >
-        I am a passionate Frontend Developer from Accra, Ghana, eager to build
-        engaging and responsive web experiences.
-      </p>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+        I'm a passionate Frontend Developer dedicated to crafting engaging,
+        responsive, and user-friendly web experiences.
+      </motion.p>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.9, delay: 0.6 }}
+        className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8"
+      >
         {boxData.map((box, index) => (
-          <div
+          <motion.div
+            whileHover={{ scale: 1.05 }}
             key={index}
-            className="bg-white dark:bg-gray-800  p-8 flex flex-col items-start gap-6 border h-[300px] w-[250px]  border-gray-300 rounded-xl  cursor-pointer hover:-translate-y-1 duration-500 hover:shadow-[4px_4px_0_#000] dark:hover:text-black"
-            data-aos="fade-up"
-            data-aos-delay={500 + index * 100}
+            className="bg-white dark:bg-gray-800 p-8 flex flex-col items-start gap-6 border h-[300px] w-[250px] border-gray-300 rounded-xl cursor-pointer hover:-translate-y-1 duration-500 hover:shadow-[4px_4px_0_#000] dark:hover:text-white dark:border-white dark:hover:shadow-white"
           >
-            <div
-              className="flex h-16 w-8 bg-pink-600 rounded-md justify-center items-center text-white"
-              data-aos="zoom-in"
-              data-aos-delay="600"
-            >
+            <div className="h-17 w-8 flex  p-1 justify-center items-center bg-black rounded-md text-white text-3xl dark:bg-white dark:text-black">
               {box.icons}
             </div>
-            <h2
-              className="text-xl font-bold"
-              data-aos="fade-up"
-              data-aos-delay="700"
-            >
-              {box.title}
-            </h2>
-            <p
-              className="text-neutral-500"
-              data-aos="fade-up"
-              data-aos-delay="800"
-            >
-              {box.description}
-            </p>
+            <h2 className="text-xl font-bold">{box.title}</h2>
+            <p className="text-black dark:text-white">{box.description}</p>
             <span
-              className="text-blue-500 cursor-pointer"
-              data-aos="fade-up"
-              data-aos-delay="900"
+              className={`cursor-pointer ${
+                index === 0
+                  ? " text-blue-500 font-semibold  mt-7"
+                  : "text-blue-500 font-semibold "
+              }`}
             >
               {box.read}
             </span>
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
