@@ -1,149 +1,471 @@
-import React from "react";
-import { TbWorld } from "react-icons/tb";
-import img from "../assets/susugroup.png";
-import market from "../assets/MarketPress.png";
-import Game from "../assets/game (2).png";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiExternalLink, FiGithub, FiCheck, FiBookOpen, FiLayers } from "react-icons/fi";
+import { TbBrain, TbStethoscope, TbSparkles } from "react-icons/tb";
+
+// Existing images
+import susuImg from "../assets/susugroup.png";
+import marketImg from "../assets/MarketPress.png";
+import gameImg from "../assets/game (2).png";
+import todoImg from "../assets/Todo-list.png";
+
 const MyWork = () => {
+  const [activeFilter, setActiveFilter] = useState("all");
+
   const projects = [
     {
-      title: "Susugroup WebApp",
-      date: "Jan 2024 - Feb 2024",
-      description:
-        "I built a digital savings platform that helps users participate in ROSCA (Rotating Savings and Credit Associations). The platform allows users to create, join, and manage savings groups effectively.",
-      tags: ["HTML", "Tailwind CSS", "JavaScript", "Google Icons"],
-      image: img,
-      links: {
-        website: "https://nicholas-philip.github.io/-Susugroupapp/",
-      },
-    },
-    {
-      title: "Auto Part Website",
-      date: "June 2023 - Present",
-      description:
-        "Developed a responsive website for an auto parts business, featuring a product catalog, search functionality, and secure checkout system.",
-      tags: ["HTML", "Vanilla CSS", "Flowbite", "Google Fonts", "Google Icons"],
-      image: market,
-      links: {
-        website: "https://nicholas-philip.github.io/marketpress/",
-        source: "#",
-      },
-    },
-    {
-      title: "TIC TAC TOE",
-      date: "June 2023 - Present",
-      description:
-        "Developed a classic Tic Tac Toe game. The game features interactive gameplay with a responsive design, allowing players to compete against each other in real-time. It also includes a clean, intuitive interface for an engaging user experience.",
-      tags: ["JavaScript", "HTML", "TailwindCSS"],
-      image: Game,
+      id: "nursify",
+      title: "Nursify — Healthcare-as-a-Service Platform",
+      category: "fullstack",
+      categoryLabel: "Healthcare & Telehealth",
+      tagline: "Telehealth platform connecting patients with verified nurses",
+      image: null,
+      accentIcon: <TbStethoscope className="w-8 h-8 text-emerald-400" />,
+      gradient: "from-emerald-950/70 via-teal-950/50 to-slate-900",
+      problem:
+        "Patients need verified, timely access to qualified nursing professionals for remote consultations, vital sign monitoring, and medical record management.",
+      built:
+        "A full-stack digital health platform featuring WebRTC video consultations, real-time Socket.io messaging, role-based dashboards, and native Android packaging with Capacitor.",
+      highlights: [
+        "WebRTC video calls & real-time Socket.io patient-nurse chat",
+        "Role-guarded routes (Patient, Nurse, Admin) with granular permissions",
+        "Interactive health data visualizations for tracking patient vital signs",
+        "Maternal & Child Health modules for prenatal and immunization tracking",
+        "Nurse license verification pipeline & document management system",
+      ],
+      learned:
+        "Architecting complex role-based healthcare workflows, managing WebRTC connection state, and packaging web apps with Capacitor for Android.",
+      tags: ["React.js", "Node.js", "Express.js", "MongoDB", "WebRTC", "Socket.io", "Capacitor", "Tailwind CSS"],
       links: {
         website: "#",
-        source: "#",
+        source: "https://github.com/nicholas-philip",
+      },
+    },
+    {
+      id: "skypay",
+      title: "SkyPay — African Mobile Money Digital Wallet",
+      category: "fullstack",
+      categoryLabel: "Fintech & Mobile App",
+      tagline: "Mobile wallet with ACID double-entry ledger & MoMo integration",
+      image: null,
+      accentIcon: <FiLayers className="w-8 h-8 text-cyan-400" />,
+      gradient: "from-cyan-950/70 via-blue-950/50 to-slate-900",
+      problem:
+        "Users in Africa need a secure, intuitive digital wallet supporting deposits, withdrawals, and instant peer-to-peer transfers across mobile money providers.",
+      built:
+        "A full-stack mobile wallet application built with React Native (Expo) and an ACID-compliant Node.js/MongoDB transaction engine with double-entry ledgers.",
+      highlights: [
+        "Mobile Money provider integration (MTN, Vodafone, Tigo) with strict network rules",
+        "Immutable, auditable double-entry transaction ledger preventing double-spending",
+        "Real-time balance updates, privacy balance masking, and optimistic UI updates",
+        "High-performance state management using Zustand and TanStack React Query",
+        "Glassmorphic UI styled with NativeWind (Tailwind CSS) and smooth animations",
+      ],
+      learned:
+        "Designing ACID-compliant financial state machines, immutable transaction ledgers, and caching server state with TanStack Query in React Native.",
+      tags: ["React Native", "Expo", "NativeWind", "Zustand", "TanStack Query", "Node.js", "Express", "MongoDB"],
+      links: {
+        website: "#",
+        source: "https://github.com/nicholas-philip",
+      },
+    },
+    {
+      id: "kente-ai",
+      title: "Kente AI — Ghana Culture & Tourism AI Assistant",
+      category: "ai",
+      categoryLabel: "AI & Tourism",
+      tagline: "Conversational AI travel guide with vision & local language learning",
+      image: null,
+      accentIcon: <TbSparkles className="w-8 h-8 text-amber-400" />,
+      gradient: "from-amber-950/70 via-orange-950/50 to-slate-900",
+      problem:
+        "Travelers and cultural enthusiasts lack accessible tools to explore Ghanaian destinations, landmarks, and cultural traditions in an interactive conversational format.",
+      built:
+        "An AI travel assistant that plans itineraries, suggests places based on interests, teaches basic phrases in Twi, Ga, and Ewe, and recognizes uploaded photos of landmarks and Kente patterns.",
+      highlights: [
+        "Token-by-token streaming AI replies for immediate, responsive user feedback",
+        "Multimodal photo analysis for identifying Kente cloth patterns, landmarks, and food",
+        "Semantic RAG pipeline that searches tourism data by meaning rather than keywords",
+        "Strict anti-hallucination guardrails forcing responses to use verified cultural context",
+      ],
+      learned:
+        "Building semantic vector search pipelines, implementing guardrails against LLM hallucinations, and handling streaming responses on the frontend.",
+      tags: ["React.js", "FastAPI", "Python", "RAG", "ChromaDB", "Vector Search", "OpenRouter", "Tailwind CSS"],
+      links: {
+        website: "#",
+        source: "https://github.com/nicholas-philip",
+      },
+    },
+    {
+      id: "ecommerce",
+      title: "Luxury Fashion & Beauty E-Commerce Platform",
+      category: "fullstack",
+      categoryLabel: "E-Commerce & Admin",
+      tagline: "Full-stack storefront & admin dashboard with Paystack MoMo & GPS",
+      image: null,
+      accentIcon: <TbBrain className="w-8 h-8 text-purple-400" />,
+      gradient: "from-purple-950/70 via-pink-950/50 to-slate-900",
+      problem:
+        "Modern luxury fashion brands require a decoupled customer storefront with Ghanaian Mobile Money checkout, precise GPS location tagging, and an administrative control center.",
+      built:
+        "A full-stack e-commerce platform using React 19, Vite, Express.js, and MongoDB with Paystack Mobile Money integration, Leaflet.js map delivery pinpointing, and Recharts analytics.",
+      highlights: [
+        "Paystack API integration (Card & MTN/Telecel/AirtelTigo MoMo) with HMAC webhooks",
+        "Interactive GPS delivery pinpointing using Leaflet.js and HTML5 Geolocation",
+        "Interactive 'Beauty & Style Match' recommendation quiz",
+        "Admin analytics dashboard with Recharts, inventory tracking, and Cloudinary uploads",
+        "Automated transactional emails & invoices via Nodemailer and EJS templates",
+      ],
+      learned:
+        "Handling Paystack webhook HMAC verification, integrating Leaflet.js interactive maps, and architecting RBAC for store operations.",
+      tags: ["React 19", "Vite", "Node.js", "Express.js", "MongoDB", "Paystack", "Zustand", "Leaflet.js"],
+      links: {
+        website: "#",
+        source: "https://github.com/nicholas-philip",
+      },
+    },
+    {
+      id: "nutrighana",
+      title: "NutriGhana — Nutrition & Local Food App",
+      category: "fullstack",
+      categoryLabel: "Nutrition & Mobile",
+      tagline: "Cross-platform mobile & web app for local Ghanaian nutrition",
+      image: null,
+      accentIcon: <TbSparkles className="w-8 h-8 text-emerald-400" />,
+      gradient: "from-emerald-950/70 via-slate-900 to-slate-900",
+      problem:
+        "Individuals seeking nutritional information and dietary guidance for local Ghanaian dishes lack dedicated digital nutritional resources.",
+      built:
+        "A cross-platform React Native and React.js application delivering nutritional breakdowns of local Ghanaian foods, dietary tips, and personalized user profiles.",
+      highlights: [
+        "Local food nutritional database with macro/micronutrient breakdowns",
+        "Cross-platform UI using Tailwind CSS and NativeWind",
+        "Secure user authentication and personalized health tips with Firebase & Express",
+      ],
+      learned:
+        "Structuring shared cross-platform design tokens and managing consistent data models across mobile and web interfaces.",
+      tags: ["React Native", "React.js", "NativeWind", "Firebase", "Express.js", "MongoDB"],
+      links: {
+        website: "#",
+        source: "https://github.com/nicholas-philip",
+      },
+    },
+    {
+      id: "susugroup",
+      title: "SusuGroup — Digital ROSCA Savings Platform",
+      category: "web",
+      categoryLabel: "Web Application",
+      tagline: "Digitizing traditional rotating savings & group contributions",
+      image: susuImg,
+      problem:
+        "Traditional rotating savings groups face manual accounting errors, lost paper logs, and opaque payout schedules.",
+      built:
+        "A responsive web platform that allows users to create, join, and manage rotating savings and credit groups transparently.",
+      highlights: [
+        "Group creation & rotation schedule automation",
+        "Contribution status tracking & payout reminders",
+        "Clean, accessible dashboard with responsive tables",
+      ],
+      learned:
+        "Translating offline financial practices into intuitive web workflows and managing state consistency across user interactions.",
+      tags: ["HTML5", "Tailwind CSS", "JavaScript", "Responsive UI"],
+      links: {
+        website: "https://nicholas-philip.github.io/-Susugroupapp/",
+        source: "https://github.com/nicholas-philip/-Susugroupapp",
+      },
+    },
+    {
+      id: "marketpress",
+      title: "MarketPress — Auto Parts Storefront",
+      category: "web",
+      categoryLabel: "E-Commerce",
+      tagline: "Automotive replacement parts catalog & search platform",
+      image: marketImg,
+      problem:
+        "Automotive business needed an easy-to-browse digital catalog allowing customers to quickly search specific vehicle components.",
+      built:
+        "A responsive e-commerce catalog featuring instant product search, category filtering, and product specification overviews.",
+      highlights: [
+        "Real-time product search and filter by part category",
+        "Detailed product cards with stock and spec details",
+        "Mobile-optimized responsive catalog grid",
+      ],
+      learned:
+        "Implementing client-side catalog filtering algorithms and building structured e-commerce product layouts.",
+      tags: ["HTML5", "Vanilla CSS", "JavaScript", "Flowbite", "Responsive Design"],
+      links: {
+        website: "https://nicholas-philip.github.io/marketpress/",
+        source: "https://github.com/nicholas-philip/marketpress",
+      },
+    },
+    {
+      id: "taskmaster",
+      title: "TaskMaster — Productivity Suite",
+      category: "web",
+      categoryLabel: "Productivity",
+      tagline: "Interactive task management with persistent state & filtering",
+      image: todoImg,
+      problem:
+        "Users need a lightweight, distraction-free tool to organize tasks by urgency and track completion status.",
+      built:
+        "A clean task manager featuring real-time status filtering, local persistence, priority tagging, and clean animations.",
+      highlights: [
+        "Full CRUD task management with edit and delete capabilities",
+        "Category tabs (All, Pending, Completed)",
+        "Persistent local storage and interactive checkboxes",
+      ],
+      learned:
+        "Mastering state lifecycle patterns, DOM event delegation, and accessible form handling in modern JavaScript.",
+      tags: ["React.js", "HTML5", "Tailwind CSS", "LocalStorage"],
+      links: {
+        website: "#",
+        source: "https://github.com/nicholas-philip",
+      },
+    },
+    {
+      id: "tictactoe",
+      title: "Tic Tac Toe — Realtime Logic Game",
+      category: "games",
+      categoryLabel: "Logic Game",
+      tagline: "Interactive 2-player game with algorithmic state evaluation",
+      image: gameImg,
+      problem:
+        "Practicing fundamental game algorithms, turn-based state evaluation, and win condition matrices in JavaScript.",
+      built:
+        "A clean, responsive browser game with dynamic score keeping, win/draw detection, and smooth board resets.",
+      highlights: [
+        "Matrix-based win-condition algorithm",
+        "Turn tracker with visual player indicators",
+        "Instant score reset and match history",
+      ],
+      learned:
+        "Designing deterministic state evaluation algorithms and handling responsive board grid layouts.",
+      tags: ["JavaScript", "HTML5", "Tailwind CSS", "Game Logic"],
+      links: {
+        website: "#",
+        source: "https://github.com/nicholas-philip",
       },
     },
   ];
 
+  const filteredProjects =
+    activeFilter === "all"
+      ? projects
+      : projects.filter((p) => p.category === activeFilter);
+
   return (
-    <motion.section
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+    <section
       id="mywork"
-      className="py-10 px-4 max-w-5xl mx-auto"
+      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-10"
     >
-      <div className="text-center mb-10">
-        <motion.div
-          initial={{ y: -20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-center mb-2 text-lg font-serif dark:text-white"
+      {/* Section Header */}
+      <div className="text-center max-w-3xl mx-auto mb-14">
+        <motion.p
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 font-mono mb-2"
         >
-          My Projects
-        </motion.div>
+          Selected Portfolio Work
+        </motion.p>
         <motion.h2
-          initial={{ y: -20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-center text-2xl sm:text-5xl font-serif dark:text-white"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-white font-heading"
         >
-          Check out my latest work
+          Engineering Projects & Case Studies
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.7 }}
-          className="font-semibold m-2 text-center dark:text-white"
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300"
         >
-          I've worked on a variety of projects, from simple websites to complex
-          web applications. Here are a few of my favorites.
+          Real projects demonstrating full-stack engineering, frontend UI architecture, and applied AI systems.
         </motion.p>
+
+        {/* Filter Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mt-8 p-1.5 bg-slate-100 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 max-w-fit mx-auto">
+          {[
+            { id: "all", label: "All Projects" },
+            { id: "ai", label: "AI Applications" },
+            { id: "fullstack", label: "Full-Stack" },
+            { id: "web", label: "Web Apps" },
+            { id: "games", label: "Games & Tools" },
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveFilter(tab.id)}
+              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+                activeFilter === tab.id
+                  ? "bg-white dark:bg-indigo-600 text-indigo-600 dark:text-white shadow-sm"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.9 }}
-        className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-2 gap-5 md:ml-12"
-      >
-        {projects.map((project, index) => (
-          <motion.div
-            whileInHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-            key={index}
-            className="rounded-xl border shadow-sm md:w-[380px] max-h-[500px] border-black dark:border-white"
-          >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="rounded-t-xl h-40 md:h-48 w-full mb-4"
-            />
-            <div className="p-4">
-              <h3 className="text-lg sm:text-xl font-semibold dark:text-white">
-                {project.title}
-              </h3>
-              <p className="text-sm text-black mb-2 dark:text-white">
-                {project.date}
-              </p>
-              <p className="text-black mb-2 dark:text-white">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mb-2">
-                {project.tags.map((tag, idx) => (
-                  <span
-                    key={idx}
-                    className="bg-gray-300 text-black px-2 py-1 rounded-full text-xs"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex gap-2">
-                <a
-                  href={project.links.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-black text-white w-full sm:w-28 flex justify-center items-center h-10 rounded-2xl font-semibold gap-3 p-3"
+      {/* Projects Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <AnimatePresence>
+          {filteredProjects.map((project) => (
+            <motion.div
+              layout
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+              key={project.id}
+              className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-indigo-400 dark:hover:border-indigo-700/80 hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group min-h-[520px]"
+            >
+              {/* Project Preview Header */}
+              {project.image ? (
+                <div className="relative aspect-video w-full bg-slate-100 dark:bg-slate-800 overflow-hidden border-b border-slate-100 dark:border-slate-800">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/90 dark:bg-slate-900/90 text-slate-800 dark:text-slate-200 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 shadow-sm">
+                      {project.categoryLabel}
+                    </span>
+                  </div>
+                </div>
+              ) : (
+                <div
+                  className={`relative aspect-video w-full bg-gradient-to-br ${project.gradient} p-6 flex flex-col justify-between border-b border-slate-100 dark:border-slate-800`}
                 >
-                  <TbWorld /> Website
-                </a>
-                {project.links.source && (
-                  <a
-                    href={project.links.source}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-black text-white w-full sm:w-28 flex justify-center items-center h-10 rounded-2xl font-semibold gap-3 p-3"
-                  >
-                    Source
-                  </a>
-                )}
+                  <div className="flex items-center justify-between">
+                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/15 text-white backdrop-blur-md border border-white/20">
+                      {project.categoryLabel}
+                    </span>
+                    <div className="p-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/15">
+                      {project.accentIcon}
+                    </div>
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-indigo-200 font-semibold block mb-1">
+                      Featured System
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white font-heading">
+                      {project.title.split("—")[0]}
+                    </h3>
+                  </div>
+                </div>
+              )}
+
+              {/* Project Body */}
+              <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+                <div>
+                  <div className="mb-4">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white font-heading">
+                      {project.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-indigo-600 dark:text-indigo-400 font-medium mt-0.5">
+                      {project.tagline}
+                    </p>
+                  </div>
+
+                  {/* Problem & Built */}
+                  <div className="space-y-3 mb-5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <p>
+                      <strong className="text-slate-900 dark:text-white font-semibold">Problem: </strong>
+                      {project.problem}
+                    </p>
+                    <p>
+                      <strong className="text-slate-900 dark:text-white font-semibold">Built: </strong>
+                      {project.built}
+                    </p>
+                  </div>
+
+                  {/* Highlights */}
+                  <div className="mb-5">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 font-mono mb-2">
+                      Key Highlights
+                    </h4>
+                    <ul className="space-y-1.5">
+                      {project.highlights.map((h, hIdx) => (
+                        <li
+                          key={hIdx}
+                          className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-300"
+                        >
+                          <FiCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                          <span>{h}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* What Was Learned */}
+                  <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-800 mb-6">
+                    <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-900 dark:text-white mb-1">
+                      <FiBookOpen className="w-3.5 h-3.5 text-indigo-500" />
+                      <span>Engineering Insight:</span>
+                    </div>
+                    <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                      {project.learned}
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  {/* Tech Stack Chips */}
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {project.tags.map((tag, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="px-2.5 py-1 rounded-md text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex items-center gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+                    {project.links.website && project.links.website !== "#" ? (
+                      <a
+                        href={project.links.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 flex items-center justify-center gap-2 shadow-sm transition-colors"
+                      >
+                        <span>Live Demo</span>
+                        <FiExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    ) : (
+                      <div className="flex-1 py-2.5 px-4 rounded-xl text-xs font-medium text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-slate-800/80 text-center">
+                        Active Case Study
+                      </div>
+                    )}
+
+                    {project.links.source && (
+                      <a
+                        href={project.links.source}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="py-2.5 px-4 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-750 flex items-center gap-2 transition-colors shadow-sm"
+                      >
+                        <FiGithub className="w-3.5 h-3.5" />
+                        <span>Source Code</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
-    </motion.section>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+    </section>
   );
 };
 
