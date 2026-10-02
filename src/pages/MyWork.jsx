@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiExternalLink, FiGithub, FiCheck, FiBookOpen, FiLayers } from "react-icons/fi";
+import { FiExternalLink, FiGithub, FiCheck, FiBookOpen, FiLayers, FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { TbBrain, TbStethoscope, TbSparkles } from "react-icons/tb";
 
 // Existing images
@@ -11,6 +11,11 @@ import todoImg from "../assets/Todo-list.png";
 
 const MyWork = () => {
   const [activeFilter, setActiveFilter] = useState("all");
+  const [expandedCard, setExpandedCard] = useState(null);
+
+  const toggleCard = (id) => {
+    setExpandedCard(expandedCard === id ? null : id);
+  };
 
   const projects = [
     {
@@ -33,8 +38,6 @@ const MyWork = () => {
         "Maternal & Child Health modules for prenatal and immunization tracking",
         "Nurse license verification pipeline & document management system",
       ],
-      learned:
-        "Architecting complex role-based healthcare workflows, managing WebRTC connection state, and packaging web apps with Capacitor for Android.",
       tags: ["React.js", "Node.js", "Express.js", "MongoDB", "WebRTC", "Socket.io", "Capacitor", "Tailwind CSS"],
       links: {
         website: "#",
@@ -265,7 +268,7 @@ const MyWork = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 font-mono mb-2"
+          className="text-xs sm:text-sm font-bold uppercase tracking-wider text-black dark:text-white font-mono mb-2"
         >
           Selected Portfolio Work
         </motion.p>
@@ -274,7 +277,7 @@ const MyWork = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-white font-heading"
+          className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-black dark:text-white font-heading"
         >
           Engineering Projects & Case Studies
         </motion.h2>
@@ -283,13 +286,13 @@ const MyWork = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300"
+          className="mt-4 text-base sm:text-lg text-black dark:text-white font-medium"
         >
           Real projects demonstrating full-stack engineering, frontend UI architecture, and applied AI systems.
         </motion.p>
 
         {/* Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mt-8 p-1.5 bg-slate-100 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 max-w-fit mx-auto">
+        <div className="flex flex-wrap items-center justify-center gap-2 mt-8 p-1.5 bg-slate-200 dark:bg-slate-900 rounded-2xl border border-slate-300 dark:border-slate-800 max-w-fit mx-auto">
           {[
             { id: "all", label: "All Projects" },
             { id: "ai", label: "AI Applications" },
@@ -300,10 +303,10 @@ const MyWork = () => {
             <button
               key={tab.id}
               onClick={() => setActiveFilter(tab.id)}
-              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 activeFilter === tab.id
-                  ? "bg-white dark:bg-indigo-600 text-indigo-600 dark:text-white shadow-sm"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                  ? "bg-black text-white dark:bg-white dark:text-black shadow-sm"
+                  : "text-black dark:text-white hover:bg-slate-300/60 dark:hover:bg-slate-800/80"
               }`}
             >
               {tab.label}
@@ -315,154 +318,185 @@ const MyWork = () => {
       {/* Projects Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <AnimatePresence>
-          {filteredProjects.map((project) => (
-            <motion.div
-              layout
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.3 }}
-              key={project.id}
-              className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-indigo-400 dark:hover:border-indigo-700/80 hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group min-h-[520px]"
-            >
-              {/* Project Preview Header */}
-              {project.image ? (
-                <div className="relative aspect-video w-full bg-slate-100 dark:bg-slate-800 overflow-hidden border-b border-slate-100 dark:border-slate-800">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/90 dark:bg-slate-900/90 text-slate-800 dark:text-slate-200 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 shadow-sm">
-                      {project.categoryLabel}
-                    </span>
-                  </div>
-                </div>
-              ) : (
-                <div
-                  className={`relative aspect-video w-full bg-gradient-to-br ${project.gradient} p-6 flex flex-col justify-between border-b border-slate-100 dark:border-slate-800`}
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/15 text-white backdrop-blur-md border border-white/20">
-                      {project.categoryLabel}
-                    </span>
-                    <div className="p-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/15">
-                      {project.accentIcon}
+          {filteredProjects.map((project) => {
+            const isExpanded = expandedCard === project.id;
+            return (
+              <motion.div
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+                key={project.id}
+                className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 shadow-sm hover:border-black dark:hover:border-white hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group"
+              >
+                {/* Project Preview Header */}
+                {project.image ? (
+                  <div className="relative aspect-video w-full bg-slate-100 dark:bg-slate-800 overflow-hidden border-b border-slate-200 dark:border-slate-800">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-white/95 dark:bg-slate-900/95 text-black dark:text-white backdrop-blur-md border border-slate-300 dark:border-slate-700 shadow-sm">
+                        {project.categoryLabel}
+                      </span>
                     </div>
                   </div>
+                ) : (
+                  <div
+                    className={`relative aspect-video w-full bg-gradient-to-br ${project.gradient} p-5 flex flex-col justify-between border-b border-slate-200 dark:border-slate-800`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-white/20 text-white backdrop-blur-md border border-white/30">
+                        {project.categoryLabel}
+                      </span>
+                      <div className="p-1.5 rounded-lg bg-white/10 backdrop-blur-md border border-white/20">
+                        {project.accentIcon}
+                      </div>
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-white font-bold block mb-0.5">
+                        Featured System
+                      </span>
+                      <h3 className="text-lg sm:text-xl font-black text-white font-heading">
+                        {project.title.split("—")[0]}
+                      </h3>
+                    </div>
+                  </div>
+                )}
+
+                {/* Project Body */}
+                <div className="p-5 flex-1 flex flex-col justify-between">
                   <div>
-                    <span className="text-[11px] font-mono uppercase tracking-wider text-indigo-200 font-semibold block mb-1">
-                      Featured System
-                    </span>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white font-heading">
-                      {project.title.split("—")[0]}
-                    </h3>
-                  </div>
-                </div>
-              )}
+                    <div className="mb-3">
+                      <h3 className="text-lg font-black text-black dark:text-white font-heading leading-snug">
+                        {project.title}
+                      </h3>
+                      <p className="text-xs text-black dark:text-white font-semibold mt-1">
+                        {project.tagline}
+                      </p>
+                    </div>
 
-              {/* Project Body */}
-              <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
-                <div>
-                  <div className="mb-4">
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white font-heading">
-                      {project.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-indigo-600 dark:text-indigo-400 font-medium mt-0.5">
-                      {project.tagline}
-                    </p>
-                  </div>
-
-                  {/* Problem & Built */}
-                  <div className="space-y-3 mb-5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                    <p>
-                      <strong className="text-slate-900 dark:text-white font-semibold">Problem: </strong>
-                      {project.problem}
-                    </p>
-                    <p>
-                      <strong className="text-slate-900 dark:text-white font-semibold">Built: </strong>
+                    {/* Brief Summary */}
+                    <p className="text-xs text-black dark:text-white leading-relaxed mb-4 font-normal line-clamp-3">
                       {project.built}
                     </p>
-                  </div>
 
-                  {/* Highlights */}
-                  <div className="mb-5">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 font-mono mb-2">
-                      Key Highlights
-                    </h4>
-                    <ul className="space-y-1.5">
-                      {project.highlights.map((h, hIdx) => (
-                        <li
-                          key={hIdx}
-                          className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-300"
+                    {/* Tech Stack Chips (First 4) */}
+                    <div className="flex flex-wrap gap-1.5 mb-3">
+                      {project.tags.slice(0, 4).map((tag, tIdx) => (
+                        <span
+                          key={tIdx}
+                          className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white border border-slate-200 dark:border-slate-700"
                         >
-                          <FiCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                          <span>{h}</span>
-                        </li>
+                          {tag}
+                        </span>
                       ))}
-                    </ul>
-                  </div>
-
-                  {/* What Was Learned */}
-                  <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-800 mb-6">
-                    <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-900 dark:text-white mb-1">
-                      <FiBookOpen className="w-3.5 h-3.5 text-indigo-500" />
-                      <span>Engineering Insight:</span>
+                      {project.tags.length > 4 && (
+                        <span className="px-1.5 py-0.5 rounded-md text-[10px] font-bold bg-slate-200 dark:bg-slate-800 text-black dark:text-white">
+                          +{project.tags.length - 4}
+                        </span>
+                      )}
                     </div>
-                    <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                      {project.learned}
-                    </p>
-                  </div>
-                </div>
 
-                <div>
-                  {/* Tech Stack Chips */}
-                  <div className="flex flex-wrap gap-1.5 mb-6">
-                    {project.tags.map((tag, tIdx) => (
-                      <span
-                        key={tIdx}
-                        className="px-2.5 py-1 rounded-md text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                    {/* Expandable Case Study Deep Dive */}
+                    <div className="mb-4">
+                      <button
+                        onClick={() => toggleCard(project.id)}
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-black dark:text-white hover:opacity-75 transition-opacity py-1"
                       >
-                        {tag}
-                      </span>
-                    ))}
+                        <span>{isExpanded ? "Hide Details" : "View Case Study Details"}</span>
+                        {isExpanded ? (
+                          <FiChevronUp className="w-3.5 h-3.5" />
+                        ) : (
+                          <FiChevronDown className="w-3.5 h-3.5" />
+                        )}
+                      </button>
+
+                      {isExpanded && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="mt-3 pt-3 border-t border-slate-200 dark:border-slate-800 space-y-3.5 text-xs text-black dark:text-white"
+                        >
+                          <div>
+                            <strong className="block font-bold mb-1">Problem & Context:</strong>
+                            <p className="leading-relaxed font-normal">{project.problem}</p>
+                          </div>
+
+                          <div>
+                            <strong className="block font-bold mb-1 font-mono uppercase tracking-wider text-[10px]">
+                              Key Highlights:
+                            </strong>
+                            <ul className="space-y-1">
+                              {project.highlights.map((h, hIdx) => (
+                                <li key={hIdx} className="flex items-start gap-1.5 font-normal">
+                                  <FiCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                                  <span>{h}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+
+                          <div>
+                            <strong className="block font-bold mb-1">All Technologies:</strong>
+                            <div className="flex flex-wrap gap-1">
+                              {project.tags.map((tag, tIdx) => (
+                                <span
+                                  key={tIdx}
+                                  className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-200 dark:bg-slate-800 text-black dark:text-white"
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </div>
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex items-center gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+                  <div className="flex items-center gap-2.5 pt-3 border-t border-slate-200 dark:border-slate-800 mt-2">
                     {project.links.website && project.links.website !== "#" ? (
                       <a
                         href={project.links.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 flex items-center justify-center gap-2 shadow-sm transition-colors"
+                        className="flex-1 py-2 px-3 rounded-xl text-xs font-bold bg-black text-white hover:bg-slate-800 dark:bg-white dark:text-black dark:hover:bg-slate-200 border border-black dark:border-white flex items-center justify-center gap-1.5 shadow-sm transition-colors"
                       >
                         <span>Live Demo</span>
                         <FiExternalLink className="w-3.5 h-3.5" />
                       </a>
                     ) : (
-                      <div className="flex-1 py-2.5 px-4 rounded-xl text-xs font-medium text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-slate-800/80 text-center">
-                        Active Case Study
-                      </div>
+                      <button
+                        onClick={() => toggleCard(project.id)}
+                        className="flex-1 py-2 px-3 rounded-xl text-xs font-bold bg-slate-100 text-black dark:bg-slate-800 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 flex items-center justify-center gap-1.5 shadow-sm transition-colors"
+                      >
+                        <span>Architecture Spec</span>
+                        <FiBookOpen className="w-3.5 h-3.5" />
+                      </button>
                     )}
 
-                    {project.links.source && (
-                      <a
-                        href={project.links.source}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="py-2.5 px-4 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-750 flex items-center gap-2 transition-colors shadow-sm"
-                      >
-                        <FiGithub className="w-3.5 h-3.5" />
-                        <span>Source Code</span>
-                      </a>
-                    )}
+                    <a
+                      href={project.links.source || "https://github.com/nicholas-philip"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="py-2 px-3 rounded-xl text-xs font-bold text-black dark:text-white bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-750 flex items-center gap-1.5 transition-colors shadow-sm"
+                    >
+                      <FiGithub className="w-3.5 h-3.5" />
+                      <span>Code</span>
+                    </a>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </AnimatePresence>
       </div>
     </section>

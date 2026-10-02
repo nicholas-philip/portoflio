@@ -70,7 +70,7 @@ const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 font-mono mb-2"
+          className="text-xs sm:text-sm font-bold uppercase tracking-wider text-black dark:text-white font-mono mb-2"
         >
           What I Deliver
         </motion.p>
@@ -79,7 +79,7 @@ const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-white font-heading"
+          className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-black dark:text-white font-heading"
         >
           Engineering Services
         </motion.h2>
@@ -88,7 +88,7 @@ const Services = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300"
+          className="mt-4 text-base sm:text-lg text-black dark:text-white font-medium"
         >
           Combining clean frontend engineering, full-stack API integration, and intelligent AI capabilities to build impactful digital products.
         </motion.p>
@@ -99,25 +99,25 @@ const Services = () => {
         {services.map((service, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: index * 0.1 }}
-            className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-indigo-400 dark:hover:border-indigo-700/80 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 shadow-sm hover:border-black dark:hover:border-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
           >
             <div>
               {/* Header with Icon */}
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center group-hover:scale-105 transition-transform">
+                <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center group-hover:scale-105 transition-transform">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white font-heading">
+                <h3 className="text-xl font-bold text-black dark:text-white font-heading">
                   {service.title}
                 </h3>
               </div>
 
               {/* Description */}
-              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+              <p className="text-sm sm:text-base text-black dark:text-white leading-relaxed mb-6 font-medium">
                 {service.description}
               </p>
 
@@ -126,9 +126,9 @@ const Services = () => {
                 {service.features.map((feature, fIdx) => (
                   <li
                     key={fIdx}
-                    className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300"
+                    className="flex items-center gap-2.5 text-xs sm:text-sm text-black dark:text-white font-medium"
                   >
-                    <span className="w-4 h-4 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                    <span className="w-4 h-4 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
                       <FiCheck className="w-3 h-3" />
                     </span>
                     <span>{feature}</span>
@@ -138,11 +138,11 @@ const Services = () => {
             </div>
 
             {/* Tech Tags */}
-            <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex flex-wrap gap-2">
+            <div className="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-wrap gap-2">
               {service.tags.map((tag, tIdx) => (
                 <span
                   key={tIdx}
-                  className="px-2.5 py-1 rounded-md text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                  className="px-2.5 py-1 rounded-md text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white border border-slate-200 dark:border-slate-700"
                 >
                   {tag}
                 </span>

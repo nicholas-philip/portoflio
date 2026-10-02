@@ -1,4 +1,3 @@
-
 import profileImg from "../assets/my-profile.jpeg";
 import { motion } from "framer-motion";
 import { FiArrowDown, FiDownload, FiGithub, FiLinkedin, FiMail, FiArrowUpRight } from "react-icons/fi";
@@ -9,7 +8,9 @@ const Home = () => {
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
+      const yOffset = -80;
+      const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
 
@@ -38,13 +39,13 @@ const Home = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-100/90 dark:bg-slate-800/90 border border-slate-200/90 dark:border-slate-700/80 text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 mb-10 sm:mb-12 shadow-sm"
+          className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs sm:text-sm font-bold text-black dark:text-white mb-8 sm:mb-10 shadow-sm"
         >
           <span className="relative flex h-2.5 w-2.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
           </span>
-          <span>Available for new opportunities & freelance</span>
+          <span>Open to Full-Time Roles &amp; Engineering Opportunities</span>
         </motion.div>
 
         {/* Profile Avatar with Subtle Glowing Ring */}
@@ -71,10 +72,10 @@ const Home = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="space-y-3 mb-8"
         >
-          <h2 className="text-sm sm:text-base font-semibold text-indigo-700 dark:text-indigo-400 tracking-wider uppercase font-mono">
+          <h2 className="text-sm sm:text-base font-bold text-black dark:text-white tracking-wider uppercase font-mono">
             Hi, I&apos;m Philip Nicholas Lodounu
           </h2>
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white font-heading leading-tight">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-black dark:text-white font-heading leading-tight">
             Frontend Engineer <br className="hidden sm:inline" />
             <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent dark:from-indigo-400 dark:via-purple-400 dark:to-cyan-400">
               & AI Engineer
@@ -87,47 +88,69 @@ const Home = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed mb-8"
+          className="text-sm sm:text-lg text-black dark:text-white max-w-2xl leading-relaxed mb-6 sm:mb-8 font-medium px-2 sm:px-0"
         >
-          I build responsive, user-focused web and mobile applications, integrating AI capabilities with{" "}
-          <span className="font-semibold text-slate-800 dark:text-slate-100">React.js</span>,{" "}
-          <span className="font-semibold text-slate-800 dark:text-slate-100">React Native</span>,{" "}
-          <span className="font-semibold text-slate-800 dark:text-slate-100">Node.js</span>,{" "}
-          <span className="font-semibold text-slate-800 dark:text-slate-100">Python</span>, and modern{" "}
-          <span className="font-semibold text-slate-800 dark:text-slate-100">LLM technologies</span>.
+          Software Engineer building responsive web and mobile applications using{" "}
+          <span className="font-bold">JavaScript, React.js, React Native, Node.js, and Tailwind CSS</span>.
+          Experienced in full-stack development and integrating practical{" "}
+          <span className="font-bold">AI engineering</span> to create solutions that solve real-world problems.
         </motion.p>
 
-        {/* Action CTAs */}
+        {/* Action CTAs — Clean 2-column + 1-row layout on mobile, inline on desktop */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex flex-wrap items-center justify-center gap-3.5 mb-10"
+          className="grid grid-cols-2 sm:flex sm:flex-row items-center justify-center gap-2.5 sm:gap-3.5 mb-8 sm:mb-10 w-full max-w-sm sm:max-w-none px-2 sm:px-0"
         >
           <button
             onClick={() => scrollToSection("mywork")}
-            className="px-6 py-3 rounded-xl font-semibold text-sm text-white bg-indigo-600 hover:bg-indigo-500 active:scale-95 transition-all shadow-md shadow-indigo-600/25 flex items-center gap-2"
+            className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold text-xs sm:text-sm bg-black text-white hover:bg-slate-800 dark:bg-white dark:text-black dark:hover:bg-slate-200 border border-black dark:border-white active:scale-95 transition-all shadow-sm flex items-center justify-center gap-1.5 whitespace-nowrap"
           >
             <span>Explore Projects</span>
-            <FiArrowDown className="w-4 h-4" />
+            <FiArrowDown className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </button>
 
           <a
             href="/Resume.pdf"
             download
-            className="px-6 py-3 rounded-xl font-semibold text-sm text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 active:scale-95 transition-all shadow-sm flex items-center gap-2"
+            className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold text-xs sm:text-sm bg-white text-black hover:bg-slate-100 dark:bg-black dark:text-white dark:hover:bg-slate-900 border border-black dark:border-white active:scale-95 transition-all shadow-sm flex items-center justify-center gap-1.5 whitespace-nowrap"
           >
             <span>Download CV</span>
-            <FiDownload className="w-4 h-4" />
+            <FiDownload className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </a>
 
           <button
             onClick={() => scrollToSection("contact")}
-            className="px-6 py-3 rounded-xl font-semibold text-sm text-slate-700 dark:text-slate-200 bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800/50 border border-slate-300 dark:border-slate-700/80 active:scale-95 transition-all flex items-center gap-1.5"
+            className="col-span-2 sm:col-span-1 w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold text-xs sm:text-sm bg-white text-black hover:bg-black hover:text-white dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black border border-black dark:border-white active:scale-95 transition-all flex items-center justify-center gap-1.5 shadow-sm whitespace-nowrap"
           >
             <span>Get in Touch</span>
-            <FiArrowUpRight className="w-4 h-4" />
+            <FiArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </button>
+        </motion.div>
+
+        {/* Quick Highlights for Employers & Recruiters */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.45 }}
+          className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 w-full max-w-2xl mb-8 text-left px-2 sm:px-0"
+        >
+          <div className="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 shadow-sm">
+            <span className="text-[10px] uppercase font-mono font-bold text-black dark:text-white block">Domain</span>
+            <span className="text-xs sm:text-sm font-black text-black dark:text-white block">Frontend &amp; Mobile</span>
+            <p className="text-[11px] text-black dark:text-white mt-0.5 font-normal">React, React Native, TypeScript</p>
+          </div>
+          <div className="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 shadow-sm">
+            <span className="text-[10px] uppercase font-mono font-bold text-black dark:text-white block">Backend</span>
+            <span className="text-xs sm:text-sm font-black text-black dark:text-white block">APIs &amp; Architecture</span>
+            <p className="text-[11px] text-black dark:text-white mt-0.5 font-normal">Node.js, Express, WebSockets</p>
+          </div>
+          <div className="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 shadow-sm">
+            <span className="text-[10px] uppercase font-mono font-bold text-black dark:text-white block">Applied AI</span>
+            <span className="text-xs sm:text-sm font-black text-black dark:text-white block">Intelligent Apps</span>
+            <p className="text-[11px] text-black dark:text-white mt-0.5 font-normal">LLMs, RAG, Vector Search</p>
+          </div>
         </motion.div>
 
         {/* Social Quick Links */}
@@ -135,14 +158,14 @@ const Home = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="flex items-center gap-3 text-slate-500 dark:text-slate-400 mb-10"
+          className="flex items-center gap-3 text-black dark:text-white mb-10"
         >
           <a
             href="https://github.com/nicholas-philip"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub Profile"
-            className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 dark:hover:border-indigo-800 transition-colors shadow-sm"
+            className="p-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-black dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-400 transition-colors shadow-sm"
           >
             <FiGithub className="w-5 h-5" />
           </a>
@@ -151,14 +174,14 @@ const Home = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
-            className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 dark:hover:border-indigo-800 transition-colors shadow-sm"
+            className="p-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-black dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-400 transition-colors shadow-sm"
           >
             <FiLinkedin className="w-5 h-5" />
           </a>
           <a
             href="mailto:philiplodonu67@gmail.com"
             aria-label="Send Email"
-            className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 dark:hover:border-indigo-800 transition-colors shadow-sm"
+            className="p-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-black dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-400 transition-colors shadow-sm"
           >
             <FiMail className="w-5 h-5" />
           </a>
@@ -169,16 +192,16 @@ const Home = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="w-full pt-6 border-t border-slate-200/60 dark:border-slate-800/80"
+          className="w-full pt-6 border-t border-slate-200 dark:border-slate-800"
         >
-          <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-4 font-mono">
+          <p className="text-xs font-bold uppercase tracking-wider text-black dark:text-white mb-4 font-mono">
             Core Engineering Stack & Focus
           </p>
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             {techBadges.map((badge, idx) => (
               <div
                 key={idx}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60 text-xs font-medium text-slate-700 dark:text-slate-200 shadow-sm"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs font-semibold text-black dark:text-white shadow-sm"
               >
                 <span className="text-base">{badge.icon}</span>
                 <span>{badge.name}</span>

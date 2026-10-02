@@ -87,18 +87,18 @@ const About = () => {
   const getLevelBadgeClass = (level) => {
     switch (level) {
       case "Comfortable":
-        return "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800/60";
+        return "bg-black text-white dark:bg-white dark:text-black border-transparent";
       case "Working Knowledge":
-        return "bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-400 border-indigo-200 dark:border-indigo-800/60";
+        return "bg-slate-200 text-black dark:bg-slate-800 dark:text-white border-slate-300 dark:border-slate-700";
       case "Exploring":
-        return "bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-400 border-purple-200 dark:border-purple-800/60";
+        return "bg-slate-100 text-black dark:bg-slate-900 dark:text-white border-slate-300 dark:border-slate-700";
       default:
-        return "bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700";
+        return "bg-slate-100 text-black dark:bg-slate-800 dark:text-white border-slate-300 dark:border-slate-700";
     }
   };
 
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-10">
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-16">
         <motion.p
@@ -106,7 +106,7 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 font-mono mb-2"
+          className="text-xs sm:text-sm font-bold uppercase tracking-wider text-black dark:text-white font-mono mb-2"
         >
           My Background & Growth
         </motion.p>
@@ -115,9 +115,9 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-white font-heading"
+          className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-black dark:text-white font-heading"
         >
-          About Me & Technical Arsenal
+          About Me
         </motion.h2>
       </div>
 
@@ -131,16 +131,16 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="lg:col-span-5"
         >
-          <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 shadow-xl">
+          <div className="relative rounded-2xl overflow-hidden border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 shadow-xl">
             <img
               src={userImg}
               alt="Philip Nicholas Lodounu"
-              className="w-full h-[400px] object-cover object-center rounded-xl"
+              className="w-full h-64 sm:h-80 md:h-96 lg:h-[400px] object-cover object-center rounded-xl"
             />
-            <div className="mt-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80">
-              <div className="flex items-center justify-between text-xs text-slate-600 dark:text-slate-300">
-                <span className="font-semibold text-slate-900 dark:text-white">Accra, Ghana · Codetrain Africa</span>
-                <span className="text-indigo-600 dark:text-indigo-400 font-mono">Frontend & AI</span>
+            <div className="mt-4 p-4 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs text-black dark:text-white">
+                <span className="font-bold text-black dark:text-white">Accra, Ghana · Codetrain Africa</span>
+                <span className="font-bold font-mono text-black dark:text-white">Frontend & AI</span>
               </div>
             </div>
           </div>
@@ -154,39 +154,66 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="lg:col-span-7 space-y-6"
         >
-          <div className="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 leading-relaxed space-y-4 text-base sm:text-lg">
+          <div className="max-w-none text-black dark:text-white leading-relaxed space-y-4 text-base sm:text-lg font-medium">
             <p>
               I am a Software Engineer with hands-on experience building responsive, user-focused web and mobile applications using{" "}
-              <strong className="text-slate-900 dark:text-white font-semibold">JavaScript, React.js, React Native, Node.js, and Tailwind CSS</strong>.
+              <strong className="text-black dark:text-white font-bold">JavaScript, React.js, React Native, Node.js, and Tailwind CSS</strong>.
             </p>
             <p>
-              Completed comprehensive software engineering training at <strong className="text-slate-900 dark:text-white font-semibold">Codetrain Africa</strong> and honed my skills through professional internships at <strong className="text-slate-900 dark:text-white font-semibold">Complete Farmer</strong> and <strong className="text-slate-900 dark:text-white font-semibold">Oasis Infobyte</strong>.
+              Experienced in developing end-to-end applications, integrating AI capabilities, and using modern development tools to build practical software solutions.
+              Completed software engineering training at{" "}
+              <strong className="text-black dark:text-white font-bold">Codetrain Africa</strong> and continue to strengthen skills through real-world projects and professional experience at{" "}
+              <strong className="text-black dark:text-white font-bold">Aerolabgh</strong>, <strong className="text-black dark:text-white font-bold">Complete Farmer</strong>, and{" "}
+              <strong className="text-black dark:text-white font-bold">Oasis Infobyte</strong>.
             </p>
             <p>
-              Today, I build end-to-end applications integrating <strong className="text-slate-900 dark:text-white font-semibold">LLMs, RAG retrieval pipelines, real-time WebSockets, and Mobile Money payments (Paystack)</strong> to solve practical problems.
+              A problem solver and collaborative team player with a strong interest in frontend development, AI engineering, and creating technology that solves real-world problems.
+              Today I build end-to-end applications integrating{" "}
+              <strong className="text-black dark:text-white font-bold">LLMs, RAG retrieval pipelines, real-time WebSockets, and Mobile Money payments</strong>.
             </p>
           </div>
 
-          {/* Education & Certifications Summary */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-            <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-              <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 text-sm font-bold mb-1 font-mono">
-                <FiBookOpen className="w-4 h-4" />
+          {/* Education, Certifications & Languages */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 pt-2">
+            <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 shadow-sm">
+              <div className="flex items-center gap-2 text-black dark:text-white text-sm font-bold mb-1 font-mono">
+                <FiBookOpen className="w-4 h-4 text-indigo-500" />
                 <span>Education</span>
               </div>
-              <h4 className="font-bold text-sm text-slate-900 dark:text-white">Codetrain Africa</h4>
-              <p className="text-xs text-slate-500 dark:text-slate-400">Software Engineering (2023 – Present)</p>
-              <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">Keta Senior High School (2022 – 2024)</p>
+              <h4 className="font-bold text-sm text-black dark:text-white">Codetrain Africa</h4>
+              <p className="text-xs text-black dark:text-white font-medium">Software Engineering (Apr 2023 – Present)</p>
+              <p className="text-xs text-black dark:text-white mt-1">Keta Senior High School (Sep 2022 – Nov 2024)</p>
             </div>
 
-            <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-              <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-1 font-mono">
-                <FiAward className="w-4 h-4" />
+            <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 shadow-sm">
+              <div className="flex items-center gap-2 text-black dark:text-white text-sm font-bold mb-1 font-mono">
+                <FiAward className="w-4 h-4 text-emerald-500" />
                 <span>Certifications</span>
               </div>
-              <h4 className="font-bold text-sm text-slate-900 dark:text-white">MERN Stack Development</h4>
-              <p className="text-xs text-slate-500 dark:text-slate-400">Simplilearn · Introduction to MERN</p>
-              <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">SoloLearn · Introduction to JavaScript</p>
+              <h4 className="font-bold text-sm text-black dark:text-white">MERN Stack Development</h4>
+              <p className="text-xs text-black dark:text-white font-medium">Simplilearn · Introduction to MERN</p>
+              <p className="text-xs text-black dark:text-white mt-1">SoloLearn · Introduction to JavaScript</p>
+            </div>
+
+            <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 shadow-sm">
+              <div className="flex items-center gap-2 text-black dark:text-white text-sm font-bold mb-1 font-mono">
+                <FiCode className="w-4 h-4 text-purple-500" />
+                <span>Languages</span>
+              </div>
+              <div className="space-y-1.5 mt-1">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-black dark:text-white">English</span>
+                  <span className="text-[11px] font-semibold text-black dark:text-white">Proficient</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-black dark:text-white">Ewe</span>
+                  <span className="text-[11px] font-semibold text-black dark:text-white">Native</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-black dark:text-white">Akan</span>
+                  <span className="text-[11px] font-semibold text-black dark:text-white">Native</span>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -196,16 +223,16 @@ const About = () => {
       <div className="pt-8 border-t border-slate-200 dark:border-slate-800">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-heading">
+            <h3 className="text-2xl font-black text-black dark:text-white font-heading">
               What I&apos;ve Learned & Tech Stack
             </h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+            <p className="text-sm font-medium text-black dark:text-white mt-1">
               Honest breakdown of technologies, frameworks, and platforms applied across my production and case-study builds.
             </p>
           </div>
 
           {/* Category Filter Tabs */}
-          <div className="flex flex-wrap gap-1.5 p-1 bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800">
+          <div className="flex flex-wrap gap-1.5 p-1 bg-slate-200 dark:bg-slate-900 rounded-xl border border-slate-300 dark:border-slate-800">
             {[
               { id: "all", label: "All" },
               { id: "frontend", label: "Frontend & Mobile" },
@@ -217,10 +244,10 @@ const About = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveCategory(tab.id)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                   activeCategory === tab.id
-                    ? "bg-white dark:bg-indigo-600 text-indigo-600 dark:text-white shadow-sm"
-                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                    ? "bg-black text-white dark:bg-white dark:text-black shadow-sm"
+                    : "text-black dark:text-white hover:bg-slate-300/60 dark:hover:bg-slate-800/80"
                 }`}
               >
                 {tab.label}
@@ -238,20 +265,21 @@ const About = () => {
             <motion.div
               layout
               initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.2 }}
               key={index}
-              className="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/90 shadow-sm hover:border-indigo-400 dark:hover:border-indigo-700 hover:shadow-md transition-all flex flex-col justify-between"
+              className="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 shadow-sm hover:border-black dark:hover:border-white hover:shadow-md transition-all flex flex-col justify-between"
             >
               <div className="flex items-center gap-2.5 mb-2.5">
                 <span className="text-xl">{skill.icon}</span>
-                <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 truncate">
+                <span className="text-xs sm:text-sm font-bold text-black dark:text-white truncate">
                   {skill.name}
                 </span>
               </div>
               <span
-                className={`self-start text-[10px] font-medium px-2 py-0.5 rounded-full border ${getLevelBadgeClass(
+                className={`self-start text-[10px] font-bold px-2 py-0.5 rounded-full border ${getLevelBadgeClass(
                   skill.level
                 )}`}
               >

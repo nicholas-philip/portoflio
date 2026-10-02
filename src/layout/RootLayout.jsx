@@ -10,7 +10,7 @@ import Footer from "../pages/Footer";
 
 const RootLayout = () => {
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#0b0f19] dark:text-slate-100 selection:bg-indigo-500 selection:text-white transition-colors duration-300">
+    <div className="min-h-screen bg-slate-50 text-black dark:bg-[#0b0f19] dark:text-white selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black transition-colors duration-300">
       <Nav />
       <main>
         <Home />

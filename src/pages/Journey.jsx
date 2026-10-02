@@ -22,7 +22,7 @@ const Journey = () => {
       company: "Oasis Infobyte",
       location: "Delhi, India (Remote)",
       description:
-        "Assisted in developing a responsive company website, improving mobile usability and user experience. Participated in weekly code reviews in HTML, CSS, and JavaScript, contributing to smooth team delivery.",
+        "Assisted in developing a responsive company website, improving mobile usability and user experience. Participated in weekly code reviews in HTML, CSS, and JavaScript, improving project delivery speed by 10% and enhancing stakeholder technical understanding by 60%.",
       skills: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "Code Reviews"],
     },
     {
@@ -31,7 +31,7 @@ const Journey = () => {
       company: "Complete Farmer",
       location: "Airport, Accra",
       description:
-        "Built modular UI components inspired by Shadcn UI for design consistency. Fixed backend email templates, resolved frontend issues in React.js, Tailwind CSS, and TypeScript, and collaborated with PMs for onboarding QA.",
+        "Built modular UI components inspired by Shadcn UI for design consistency and scalability. Fixed backend email templates, resolved frontend styling and responsiveness bugs using React.js, Tailwind CSS, and TypeScript, and collaborated with PMs for onboarding QA.",
       skills: ["React.js", "TypeScript", "Tailwind CSS", "Modular UI", "Email Templates"],
     },
     {
@@ -97,7 +97,7 @@ const Journey = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 font-mono mb-2"
+          className="text-xs sm:text-sm font-bold uppercase tracking-wider text-black dark:text-white font-mono mb-2"
         >
           Continuous Growth
         </motion.p>
@@ -106,7 +106,7 @@ const Journey = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-white font-heading"
+          className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-black dark:text-white font-heading"
         >
           Learning Journey & Engineering Workflow
         </motion.h2>
@@ -115,7 +115,7 @@ const Journey = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300"
+          className="mt-4 text-base sm:text-lg text-black dark:text-white font-medium"
         >
           A factual timeline of my technical evolution, active learning frontiers, and engineering methodology.
         </motion.p>
@@ -123,12 +123,12 @@ const Journey = () => {
 
       {/* Experience Timeline */}
       <div className="max-w-4xl mx-auto mb-20">
-        <h3 className="text-xl font-bold text-slate-900 dark:text-white font-heading mb-8 flex items-center gap-2">
+        <h3 className="text-xl font-black text-black dark:text-white font-heading mb-8 flex items-center gap-2">
           <FiCalendar className="text-indigo-500" />
           <span>Milestones Timeline</span>
         </h3>
 
-        <div className="relative border-l-2 border-slate-200 dark:border-slate-800 ml-4 sm:ml-6 space-y-8 pb-4">
+        <div className="relative border-l-2 border-slate-300 dark:border-slate-800 ml-2 sm:ml-6 space-y-6 sm:space-y-8 pb-4">
           {timeline.map((item, idx) => (
             <motion.div
               key={idx}
@@ -136,27 +136,27 @@ const Journey = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="relative pl-6 sm:pl-8"
+              className="relative pl-4 sm:pl-8"
             >
               {/* Timeline Marker Dot */}
-              <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-white dark:bg-slate-900 border-2 border-indigo-600 dark:border-indigo-400 shadow-sm" />
+              <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-white dark:bg-slate-900 border-2 border-black dark:border-white shadow-sm" />
 
-              <div className="p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div className="p-4 sm:p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 shadow-sm">
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                   <div>
-                    <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white font-heading">
+                    <h4 className="text-base sm:text-lg font-bold text-black dark:text-white font-heading">
                       {item.role}
                     </h4>
-                    <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-                      {item.company} · <span className="text-slate-500 dark:text-slate-400 font-normal">{item.location}</span>
+                    <span className="text-xs font-bold text-black dark:text-white">
+                      {item.company} · <span className="font-normal">{item.location}</span>
                     </span>
                   </div>
-                  <span className="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800">
+                  <span className="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-black text-white dark:bg-white dark:text-black">
                     {item.period}
                   </span>
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                <p className="text-xs sm:text-sm text-black dark:text-white leading-relaxed mb-4 font-medium">
                   {item.description}
                 </p>
 
@@ -164,7 +164,7 @@ const Journey = () => {
                   {item.skills.map((skill, sIdx) => (
                     <span
                       key={sIdx}
-                      className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                      className="px-2 py-0.5 rounded-md text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white border border-slate-200 dark:border-slate-700"
                     >
                       {skill}
                     </span>
@@ -184,17 +184,17 @@ const Journey = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="lg:col-span-5 p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between"
+          className="lg:col-span-5 p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 shadow-sm flex flex-col justify-between"
         >
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60 text-xs font-semibold font-mono mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-black dark:text-white border border-slate-300 dark:border-slate-700 text-xs font-bold font-mono mb-4">
               <FiTrendingUp />
               <span>Active Growth</span>
             </div>
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-heading mb-3">
+            <h3 className="text-2xl font-black text-black dark:text-white font-heading mb-3">
               Currently Learning
             </h3>
-            <p className="text-sm text-slate-600 dark:text-slate-300 mb-6">
+            <p className="text-sm font-medium text-black dark:text-white mb-6">
               Engineering frontiers and advanced topics I am currently studying and applying to personal prototypes:
             </p>
 
@@ -202,12 +202,12 @@ const Journey = () => {
               {currentlyLearning.map((item, idx) => (
                 <div
                   key={idx}
-                  className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-800"
+                  className="p-3.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700"
                 >
-                  <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white mb-0.5">
+                  <h4 className="text-xs sm:text-sm font-bold text-black dark:text-white mb-0.5">
                     {item.name}
                   </h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                  <p className="text-xs text-black dark:text-white font-normal">
                     {item.desc}
                   </p>
                 </div>
@@ -222,16 +222,16 @@ const Journey = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm"
+          className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 shadow-sm"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800/60 text-xs font-semibold font-mono mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-black dark:text-white border border-slate-300 dark:border-slate-700 text-xs font-bold font-mono mb-4">
             <FiCode />
             <span>Methodology</span>
           </div>
-          <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-heading mb-3">
+          <h3 className="text-2xl font-black text-black dark:text-white font-heading mb-3">
             How I Build
           </h3>
-          <p className="text-sm text-slate-600 dark:text-slate-300 mb-6">
+          <p className="text-sm font-medium text-black dark:text-white mb-6">
             A disciplined engineering process from initial requirement analysis to tested, iterative deployment:
           </p>
 
@@ -239,16 +239,16 @@ const Journey = () => {
             {workflowSteps.map((ws, wIdx) => (
               <div
                 key={wIdx}
-                className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-800 flex items-start gap-3"
+                className="p-3.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700 flex items-start gap-3"
               >
-                <span className="text-sm font-mono font-bold text-indigo-600 dark:text-indigo-400 shrink-0">
+                <span className="text-sm font-mono font-black text-black dark:text-white shrink-0">
                   {ws.step}
                 </span>
                 <div>
-                  <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white mb-0.5">
+                  <h4 className="text-xs sm:text-sm font-bold text-black dark:text-white mb-0.5">
                     {ws.title}
                   </h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                  <p className="text-xs text-black dark:text-white leading-relaxed font-normal">
                     {ws.desc}
                   </p>
                 </div>
@@ -258,33 +258,40 @@ const Journey = () => {
         </motion.div>
       </div>
 
-      {/* Engineering Practices Bar */}
+      {/* Engineering Practices */}
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4 }}
-        className="p-6 rounded-2xl bg-slate-100/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 text-center"
+        className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800"
       >
-        <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 font-mono mb-3">
-          Engineering Standards & Practices
-        </h4>
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs font-medium text-slate-700 dark:text-slate-300">
-          <span className="px-3 py-1 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
-            Component-Driven Architecture
-          </span>
-          <span className="px-3 py-1 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
-            Separation of Concerns
-          </span>
-          <span className="px-3 py-1 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
-            Resilient Error & Empty States
-          </span>
-          <span className="px-3 py-1 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
-            Git PRs & Code Cleanliness
-          </span>
-          <span className="px-3 py-1 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
-            Semantic & Accessible Markup (a11y)
-          </span>
+        <p className="font-heading text-xs font-bold uppercase tracking-[0.15em] text-slate-400 dark:text-slate-500 mb-5 text-center">
+          Engineering Standards &amp; Practices
+        </p>
+
+        <div className="grid grid-cols-2 gap-3">
+          {[
+            "Component-Driven Architecture",
+            "Separation of Concerns",
+            "Resilient Error & Empty States",
+            "Git PRs & Code Cleanliness",
+          ].map((label, i) => (
+            <div
+              key={i}
+              className="flex items-center justify-center px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+            >
+              <span className="font-sans text-xs font-semibold text-black dark:text-white text-center leading-snug">
+                {label}
+              </span>
+            </div>
+          ))}
+          {/* Last — full width centered */}
+          <div className="col-span-2 flex items-center justify-center px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+            <span className="font-sans text-xs font-semibold text-black dark:text-white text-center leading-snug">
+              Semantic &amp; Accessible Markup (a11y)
+            </span>
+          </div>
         </div>
       </motion.div>
     </section>
